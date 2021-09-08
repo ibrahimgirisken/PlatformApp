@@ -12,12 +12,10 @@ namespace Business.Concretes
     public class ProductManager : IProductService
     {
         IProductDal _productDal;
-
         public ProductManager(IProductDal productDal)
         {
             _productDal = productDal;
         }
-
         public IResult Add(Product product)
         {
             if (product.ProductName.Length<2)
@@ -27,7 +25,6 @@ namespace Business.Concretes
             _productDal.Add(product);
             return new SuccessResult(Messages.ProductAdded);
         }
-
         public IDataResult<List<Product>> GetAll()
         {
             if (DateTime.Now.Hour==7)
