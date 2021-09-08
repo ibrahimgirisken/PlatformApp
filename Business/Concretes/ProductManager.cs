@@ -22,7 +22,7 @@ namespace Business.Concretes
         {
             if (product.ProductName.Length<2)
             {
-                return new ErrorResult(Messages.SystemsystemInMaintenance);
+                return new ErrorResult(Messages.ProductNameInValid);
             }
             _productDal.Add(product);
             return new SuccessResult(Messages.ProductAdded);
@@ -30,9 +30,9 @@ namespace Business.Concretes
 
         public IDataResult<List<Product>> GetAll()
         {
-            if (DateTime.Now.Hour==11)
+            if (DateTime.Now.Hour==7)
             {
-                return new ErrorDataResult<List<Product>>(Messages.ProductNameInValid);
+                return new ErrorDataResult<List<Product>>(Messages.SystemsystemInMaintenance);
             }
             return new DataResult<List<Product>>(_productDal.GetAll(),true,Messages.ProductAll);
         }
